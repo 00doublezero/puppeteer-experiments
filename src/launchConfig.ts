@@ -5,4 +5,3 @@ export default {
     executablePath: "chromium-browser",
     userDataDir: "/home/kryger/.config/chromium/"
 }
-//module.exports = launchConfig;

@@ -15,16 +15,16 @@ import loginData from "./loginData";
         await openCartAdminLoginPage.open("https://demo.opencart.com/admin/");
         await openCartAdminLoginPage.clearLoginForm();
         await openCartAdminLoginPage.submitLoginForm(loginData);
-
     }
     {
         const openCartAdminMainPage = new OpenCartAdminMainPage(page);
-        await openCartAdminMainPage.waitForSelectorText("header>div>ul>li.dropdown>a", "demo demo ");
+        //TODO: rename waitForSelectorText() method for better semantic
+        await openCartAdminMainPage.waitForSelectorText();
         await openCartAdminMainPage.logout();
     }
     {
         const openCartAdminLoginPage = new OpenCartAdminLoginPage(page);
-        await openCartAdminLoginPage.waitForSelectorText(".panel-title", " Please enter your login details.");
+        await openCartAdminLoginPage.waitForSelectorText();
         /*await page.screenshot({path:"asdas.png"});*/
     }
     await browser.close();
