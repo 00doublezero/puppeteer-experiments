@@ -1,12 +1,12 @@
 'use strict';
-const puppeteer = require('puppeteer-core');
-const launchConfig = require('../launchConfig.js');
-const viewportConfig = require('../viewportConfig.js');
-const OpenCartAdminLoginPage = require('../pages/openCartDemo/OpenCartAdminLoginPage');
-const OpenCartAdminMainPage = require('../pages/openCartDemo/OpenCartAdminMainPage');
-const loginData = require("./loginData.js");
+import puppeteer from 'puppeteer-core';
+import launchConfig from '../launchConfig';
+import viewportConfig from '../viewportConfig';
+import OpenCartAdminLoginPage from '../pages/openCartDemo/OpenCartAdminLoginPage';
+import OpenCartAdminMainPage from '../pages/openCartDemo/OpenCartAdminMainPage';
+import loginData from "./loginData";
 
-(async ()=> {
+(async () => {
     const browser = await puppeteer.launch(launchConfig);
     const page = await browser.newPage();
     await page.setViewport(viewportConfig);
@@ -15,7 +15,7 @@ const loginData = require("./loginData.js");
         await openCartAdminLoginPage.open("https://demo.opencart.com/admin/");
         await openCartAdminLoginPage.clearLoginForm();
         await openCartAdminLoginPage.submitLoginForm(loginData);
-       
+
     }
     {
         const openCartAdminMainPage = new OpenCartAdminMainPage(page);
