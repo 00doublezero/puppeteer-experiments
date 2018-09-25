@@ -30,4 +30,8 @@ export default abstract class PuppeteerPage {
             }
         }, {}, selector, text)
     }
+
+    async waitForNavigation() {
+        await this.page.waitForNavigation();
+    }
 }

@@ -14,9 +14,4 @@ export default class OpenCartAdminMainPage extends PuppeteerPage {
     logout() {
         this.page.click(this.logoutButtonSelector);
     }
-
-    async waitForSelectorText() {
-        await super.waitForSelectorText(this.profileLableSelector, this.profileLableText);
-    }
-
 }
