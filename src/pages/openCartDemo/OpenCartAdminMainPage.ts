@@ -1,9 +1,9 @@
 "use strict";
-import Page from '../Page';
+import PuppeteerPage from '../PuppeteerPage';
+import { Page } from 'puppeteer-core';
 
-export default class OpenCartAdminMainPage extends Page {
-    page: any;
-    constructor(page: any) {
+export default class OpenCartAdminMainPage extends PuppeteerPage {
+    constructor(page: Page) {
         super(page);
     }
 

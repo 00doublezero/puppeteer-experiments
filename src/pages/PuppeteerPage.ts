@@ -1,7 +1,9 @@
+import { Page } from "puppeteer-core";
+
 "use strict"
-export default class Page {
-    page: any;
-    constructor(page: any) {
+export default abstract class PuppeteerPage {
+    page: Page;
+    constructor(page: Page) {
         this.page = page;
     }
 
