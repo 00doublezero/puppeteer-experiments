@@ -32,6 +32,6 @@ export default abstract class PuppeteerPage {
     }
 
     async waitForNavigation() {
-        await this.page.waitForNavigation();
+        await this.page.waitForNavigation({ timeout: 10000 });
     }
 }

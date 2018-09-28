@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -12,8 +12,8 @@
     "puppeteer-core": "^1.8.0"
   },
   "devDependencies": {
-    "@types/puppeteer": "^1.6.4",
+    "@types/jest": "^23.3.2",
     "jest": "^23.6.0",
-    "ts-jest": "^23.10.1"
+    "rimraf": "^2.6.2"
   }
 }
