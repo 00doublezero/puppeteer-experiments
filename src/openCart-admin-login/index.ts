@@ -1,15 +1,12 @@
 'use strict';
-import puppeteer from 'puppeteer-core';
-import launchConfig from '../launchConfig';
-import viewportConfig from '../viewportConfig';
+import PuppeteerLaunchSetup from "../pages/PuppeteerLaunchSetup";
 import OpenCartAdminLoginPage from '../pages/openCartDemo/OpenCartAdminLoginPage';
 import OpenCartAdminMainPage from '../pages/openCartDemo/OpenCartAdminMainPage';
 import loginData from "./loginData";
 
 (async () => {
-    const browser = await puppeteer.launch(launchConfig);
-    const page = await browser.newPage();
-    await page.setViewport(viewportConfig);
+    const puppeteerLaunchSetup = new PuppeteerLaunchSetup();
+    const page = await puppeteerLaunchSetup.setup();
     {
         const openCartAdminLoginPage = new OpenCartAdminLoginPage(page);
         await openCartAdminLoginPage.open("https://demo.opencart.com/admin/");
@@ -20,8 +17,5 @@ import loginData from "./loginData";
         const openCartAdminMainPage = new OpenCartAdminMainPage(page);
         await openCartAdminMainPage.logout();
     }
-    {
-        const openCartAdminLoginPage = new OpenCartAdminLoginPage(page);
-    }
-    await browser.close();
+    await puppeteerLaunchSetup.quit();
 })();

@@ -10,7 +10,7 @@ export default class OpenCartAdminLoginPage extends PuppeteerPage {
     private usernameInputSelector: string = "#input-username";
     private passwordInputSelector: string = "#input-password";
     private submiteLoginSelector: string = "button";
-    private loginFormTitleSelector: string = ".panel-title";
+    public loginFormTitleSelector: string = ".panel-title";
     private loginFormTitleText: string = " Please enter your login details.";
 
     async clearLoginForm() {
@@ -20,7 +20,6 @@ export default class OpenCartAdminLoginPage extends PuppeteerPage {
     async submitLoginForm(loginData: { login: string; password: string; }) {
         await this.page.type(this.usernameInputSelector, loginData.login);
         await this.page.type(this.passwordInputSelector, loginData.password);
-        //await ;
         await Promise.all([
             this.page.click(this.submiteLoginSelector),
             this.waitForNavigation(),
