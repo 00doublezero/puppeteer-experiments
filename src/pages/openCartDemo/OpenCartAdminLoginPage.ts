@@ -20,6 +20,10 @@ export default class OpenCartAdminLoginPage extends PuppeteerPage {
     async submitLoginForm(loginData: { login: string; password: string; }) {
         await this.page.type(this.usernameInputSelector, loginData.login);
         await this.page.type(this.passwordInputSelector, loginData.password);
-        await this.page.click(this.submiteLoginSelector);
+        //await ;
+        await Promise.all([
+            this.page.click(this.submiteLoginSelector),
+            this.waitForNavigation(),
+        ])
     }
 }

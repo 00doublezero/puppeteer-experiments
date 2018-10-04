@@ -11,7 +11,10 @@ export default class OpenCartAdminMainPage extends PuppeteerPage {
     private profileLableSelector: string = "header>div>ul>li.dropdown>a";
     private profileLableText: string = "demo demo ";
 
-    logout() {
-        this.page.click(this.logoutButtonSelector);
+    async logout() {
+        await Promise.all([
+            this.page.click(this.logoutButtonSelector),
+            this.waitForNavigation(),
+        ])
     }
 }

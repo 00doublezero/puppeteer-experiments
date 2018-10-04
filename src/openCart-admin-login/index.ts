@@ -18,14 +18,10 @@ import loginData from "./loginData";
     }
     {
         const openCartAdminMainPage = new OpenCartAdminMainPage(page);
-        //TODO: rename waitForSelectorText() method for better semantic
-        await openCartAdminMainPage.waitForNavigation();
         await openCartAdminMainPage.logout();
     }
     {
         const openCartAdminLoginPage = new OpenCartAdminLoginPage(page);
-        await openCartAdminLoginPage.waitForNavigation();
-        /*await page.screenshot({path:"asdas.png"});*/
     }
     await browser.close();
 })();

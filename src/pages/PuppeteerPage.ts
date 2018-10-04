@@ -8,7 +8,11 @@ export default abstract class PuppeteerPage {
     }
 
     async open(path: string) {
-        await this.page.goto(path);
+        await Promise.all([
+            this.page.goto(path),
+            this.waitForNavigation(),
+        ])
+        //await this.page.goto(path);
     }
 
     async clearInput(selector: string) {
@@ -32,6 +36,7 @@ export default abstract class PuppeteerPage {
     }
 
     async waitForNavigation() {
-        await this.page.waitForNavigation({ timeout: 10000 });
+        //await this.page.waitForFunction('document.readyState === "Complite"')
+        await this.page.waitForNavigation({ timeout: 10000, waitUntil: 'load' });
     }
 }
