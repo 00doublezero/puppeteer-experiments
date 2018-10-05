@@ -11,12 +11,12 @@ export default class PuppeteerLaunchSetup {
         this.browser = await puppeteer.launch(launchConfig);
         this.page = await this.browser.newPage();
         await this.page.setViewport(viewportConfig);
-        if (typeof this.browser !== "undefined" || typeof this.page !== "undefined") logger.info("Configurations done, browser is ready to use")
+        if (typeof this.browser !== "undefined" || typeof this.page !== "undefined") logger.info("Settings loaded. User may start using browser")
         return this.page;
     }
     async quit() {
         await this.browser!.close().then(() => {
-            logger.info(`Browser closed, program stoped working`)
+            logger.info(`Browser window was closed. Program exiting`)
         });
     }
 }

@@ -17,7 +17,7 @@ export default class OpenCartAdminMainPage extends PuppeteerPage {
             this.page.click(this.logoutButtonSelector),
             this.waitForNavigation(),
         ]).then(() => {
-            logger.info(`User logged out.`)
+            logger.info(`User logged out`)
         })
     }
 }

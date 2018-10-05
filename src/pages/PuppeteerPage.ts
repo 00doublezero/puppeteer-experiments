@@ -13,7 +13,7 @@ export default abstract class PuppeteerPage {
             this.page.goto(path),
             this.waitForNavigation(),
         ]).then(() => {
-            logger.info(`User moved to page ${path}`);
+            logger.info(`User navigated to page ${path}`);
         })
     }
 
@@ -21,7 +21,7 @@ export default abstract class PuppeteerPage {
         await this.page.evaluate((selector: string) => {
             document.body.querySelector(selector)!.setAttribute('value', '');
         }, selector).then(() => {
-            logger.info(`Text input for "${selector}" selector cleared.`)
+            logger.info(`Text input for "${selector}" selector cleared`)
         });
     }
 
