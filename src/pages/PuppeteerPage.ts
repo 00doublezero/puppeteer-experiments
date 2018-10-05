@@ -1,7 +1,7 @@
 "use strict"
 import { Page } from "puppeteer-core";
 import logger from "../loggerConfig"
-
+import uuidv4 from 'uuid/v4';
 export default abstract class PuppeteerPage {
     page: Page;
     constructor(page: Page) {
@@ -40,7 +40,11 @@ export default abstract class PuppeteerPage {
     }
 
     async waitForNavigation() {
-        //await this.page.waitForFunction('document.readyState === "Complite"')
         await this.page.waitForNavigation({ timeout: 10000, waitUntil: 'load' });
+    }
+    async screenshot() {
+        const uuid = await uuidv4();
+        await this.page.screenshot({ path: uuid + ".png" });
+        logger.info(`The screenshot was taken`)
     }
 }
