@@ -1,6 +1,7 @@
 "use strict";
 import PuppeteerPage from '../PuppeteerPage';
 import { Page } from 'puppeteer-core';
+import logger from "../../loggerConfig"
 
 export default class OpenCartAdminLoginPage extends PuppeteerPage {
     constructor(page: Page) {
@@ -16,6 +17,7 @@ export default class OpenCartAdminLoginPage extends PuppeteerPage {
     async clearLoginForm() {
         await this.clearInput(this.usernameInputSelector);
         await this.clearInput(this.passwordInputSelector);
+        logger.info(`Login form cleared from previous input`);
     }
     async submitLoginForm(loginData: { login: string; password: string; }) {
         await this.page.type(this.usernameInputSelector, loginData.login);
@@ -24,5 +26,6 @@ export default class OpenCartAdminLoginPage extends PuppeteerPage {
             this.page.click(this.submiteLoginSelector),
             this.waitForNavigation(),
         ])
+        logger.info(`Login for was filled with data and then submitted`)
     }
 }

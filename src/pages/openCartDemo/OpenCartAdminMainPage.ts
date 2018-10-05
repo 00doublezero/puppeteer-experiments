@@ -1,6 +1,7 @@
 "use strict";
 import PuppeteerPage from '../PuppeteerPage';
 import { Page } from 'puppeteer-core';
+import logger from "../../loggerConfig"
 
 export default class OpenCartAdminMainPage extends PuppeteerPage {
     constructor(page: Page) {
@@ -15,6 +16,8 @@ export default class OpenCartAdminMainPage extends PuppeteerPage {
         await Promise.all([
             this.page.click(this.logoutButtonSelector),
             this.waitForNavigation(),
-        ])
+        ]).then(() => {
+            logger.info(`User logged out.`)
+        })
     }
 }

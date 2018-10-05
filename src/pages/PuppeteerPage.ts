@@ -1,6 +1,7 @@
-import { Page } from "puppeteer-core";
-
 "use strict"
+import { Page } from "puppeteer-core";
+import logger from "../loggerConfig"
+
 export default abstract class PuppeteerPage {
     page: Page;
     constructor(page: Page) {
@@ -11,14 +12,17 @@ export default abstract class PuppeteerPage {
         await Promise.all([
             this.page.goto(path),
             this.waitForNavigation(),
-        ])
-        //await this.page.goto(path);
+        ]).then(() => {
+            logger.info(`User moved to page ${path}`);
+        })
     }
 
     async clearInput(selector: string) {
         await this.page.evaluate((selector: string) => {
             document.body.querySelector(selector)!.setAttribute('value', '');
-        }, selector);
+        }, selector).then(() => {
+            logger.info(`Text input for "${selector}" selector cleared.`)
+        });
     }
 
     async waitForSelectorText(selector: string, text: string) {
