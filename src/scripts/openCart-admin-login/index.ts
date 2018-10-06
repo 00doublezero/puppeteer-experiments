@@ -1,7 +1,7 @@
 'use strict';
-import PuppeteerLaunchSetup from "../pages/PuppeteerLaunchSetup";
-import OpenCartAdminLoginPage from '../pages/openCartDemo/OpenCartAdminLoginPage';
-import OpenCartAdminMainPage from '../pages/openCartDemo/OpenCartAdminMainPage';
+import PuppeteerLaunchSetup from "../../pages/PuppeteerLaunchSetup";
+import OpenCartAdminLoginPage from '../../pages/openCartDemo/OpenCartAdminLoginPage';
+import OpenCartAdminMainPage from '../../pages/openCartDemo/OpenCartAdminMainPage';
 import loginData from "./loginData";
 
 (async () => {

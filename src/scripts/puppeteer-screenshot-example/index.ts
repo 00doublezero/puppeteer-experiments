@@ -1,5 +1,5 @@
-import PuppeteerLaunchSetup from "../pages/PuppeteerLaunchSetup";
-import ExamplePage from "../pages/example/ExamplePage";
+import PuppeteerLaunchSetup from "../../pages/PuppeteerLaunchSetup";
+import ExamplePage from "../../pages/example/ExamplePage";
 
 (async () => {
     const puppeteerLaunchSetup = new PuppeteerLaunchSetup();
