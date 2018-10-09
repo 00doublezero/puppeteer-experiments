@@ -10,12 +10,18 @@ import loginData from "./loginData";
     {
         const openCartAdminLoginPage = new OpenCartAdminLoginPage(page);
         await openCartAdminLoginPage.open("https://demo.opencart.com/admin/");
+        await openCartAdminLoginPage.waitUntilPageLoaded();
         await openCartAdminLoginPage.clearLoginForm();
         await openCartAdminLoginPage.submitLoginForm(loginData);
     }
     {
         const openCartAdminMainPage = new OpenCartAdminMainPage(page);
+        await openCartAdminMainPage.waitUntilPageLoaded();
         await openCartAdminMainPage.logout();
+    }
+    {
+        const openCartAdminLoginPage = new OpenCartAdminLoginPage(page);
+        await openCartAdminLoginPage.waitUntilPageLoaded();
     }
     await puppeteerLaunchSetup.quit();
 })();
