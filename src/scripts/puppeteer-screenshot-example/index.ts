@@ -7,6 +7,7 @@ import ExamplePage from "../../pages/example/ExamplePage";
     {
         const googlePage = new ExamplePage(page);
         await googlePage.open('https://example.com');
+        await googlePage.waitUntilPageLoaded();
         await googlePage.screenshot();
     }
     await puppeteerLaunchSetup.quit();
