@@ -13,8 +13,8 @@ export default abstract class LoginPage extends PuppeteerPage {
         logger.info(`Login form cleared`);
     }
     async submitLoginForm(loginData: { login: string; password: string; }) {
-        await this.page.type(this.usernameInputSelector, loginData.login, { delay: 100 });
-        await this.page.type(this.passwordInputSelector, loginData.password, { delay: 100 });
+        await this.page.type(this.usernameInputSelector, loginData.login, { delay: 60 });
+        await this.page.type(this.passwordInputSelector, loginData.password, { delay: 60 });
         await Promise.all([
             this.page.click(this.submiteLoginSelector),
             this.page.waitForNavigation()

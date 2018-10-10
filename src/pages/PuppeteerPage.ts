@@ -32,4 +32,21 @@ export default abstract class PuppeteerPage {
         await this.page.waitForSelector("body");
         logger.info(`After load page user on page: ${this.page.url()}`);
     }
+
+    async scrollDownPage() {
+        let previousHeight = await this.page.evaluate(() => document.body.scrollHeight);
+        let currentHeight = 0;
+        try {
+            while (previousHeight !== currentHeight) {
+                previousHeight = await this.page.evaluate(() => document.body.scrollHeight);
+                await this.page.evaluate('window.scrollTo(0, document.body.scrollHeight)');
+                await this.page.waitForFunction(`document.body.scrollHeight > ${previousHeight}`);
+                await this.page.waitFor(500);
+                currentHeight = await this.page.evaluate('document.body.scrollHeight');
+            }
+        } catch (e) {
+            logger.info(`Page scrolled down`)
+        }
+    }
+
 }

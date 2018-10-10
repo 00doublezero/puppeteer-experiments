@@ -11,4 +11,6 @@ export default class TwitterLoginPage extends LoginPage {
     protected passwordInputSelector: string = "input.js-password-field";
     protected submiteLoginSelector: string = "button.submit.EdgeButton";
 
+    protected towHitch: string = `form[action="https://twitter.com/sessions"]`;
+
 }
