@@ -1,6 +1,6 @@
 'use strict';
 export default {
     args: ["--start-fullscreen", "--disable-infobars"],
-    headless: false,
+    headless: true,
     executablePath: "chromium-browser",
 }
