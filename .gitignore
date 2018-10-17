@@ -3,4 +3,4 @@ package-lock.json
 .directory
 /lib/
 /.vscode/
-src/scripts/twitter-timeline-image-scraper/loginData.ts
+/configs/*

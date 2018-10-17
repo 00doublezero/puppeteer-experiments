@@ -7,4 +7,7 @@ export default class TwitterTimelinePage extends PuppeteerPage {
         return this.page.evaluate(
             (userNameSelector) => document.body.querySelector(userNameSelector)!.textContent, this.towHitch);
     }
+    async scrapPosts() {
+
+    }
 }

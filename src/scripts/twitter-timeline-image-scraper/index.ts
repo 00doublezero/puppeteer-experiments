@@ -25,13 +25,13 @@ import fs from "fs";
         userName = await twitterTimelinePage.getTwitterName();
     }
     {
-        const twitterFollowingPage = new TwitterFollowingPage(page);
-        await twitterFollowingPage.open(`https://twitter.com/${userName}/following`);
-        await twitterFollowingPage.waitUntilPageLoaded();
         if (fs.existsSync(followingsFileName)) {
             let buffer = fs.readFileSync(followingsFileName);
             followingLis = JSON.parse(buffer.toString());
         } else {
+            const twitterFollowingPage = new TwitterFollowingPage(page);
+            await twitterFollowingPage.open(`https://twitter.com/${userName}/following`);
+            await twitterFollowingPage.waitUntilPageLoaded();
             await twitterFollowingPage.scrollDownPage();
             followingLis = await twitterFollowingPage.getFollowingsList(true);
             await fs.writeFile(followingsFileName, JSON.stringify(followingLis), 'utf8', function (err) {
@@ -43,11 +43,9 @@ import fs from "fs";
 
     }
     {
-        const tweetdeckTimelinePage = new TweetdeckTimelinePage(page);
-        await tweetdeckTimelinePage.open(`https://tweetdeck.twitter.com/`);
-        await tweetdeckTimelinePage.waitUntilPageLoaded();
-        await tweetdeckTimelinePage.observeToImages(followingLis);
-        //console.dir(followingLis);
+        const twitterTimelinePage = new TwitterTimelinePage(page);
+        await twitterTimelinePage.waitUntilPageLoaded();
+        await twitterTimelinePage.scrapPosts()
     }
     await puppeteerLaunchSetup.quit();
 })();
